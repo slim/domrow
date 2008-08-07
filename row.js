@@ -20,15 +20,19 @@ ROW = {
 		return ROW.rows[ROW.current_row];
 	},
 	current: function() {
-		return ROW.rows[ROW.current_row] || this.first();
+		return ROW.rows[ROW.current_row] || ROW.first();
 	},
 	next: function() {
-		ROW.current_row++;
+		if (ROW.current_row < ROW.rows.length - 1) {
+			ROW.current_row++;
+		}
 
 		return ROW.rows[ROW.current_row];
 	},
 	previous: function() {
-		ROW.current_row--;
+		if (ROW.current_row > 0 ) {
+			ROW.current_row--;
+		}
 
 		return ROW.rows[ROW.current_row];
 	}
