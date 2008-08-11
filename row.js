@@ -9,7 +9,9 @@ ROW = {
 		for (var t=0; t < tables.length; t++) {
 			rows = tables[t].getElementsByTagName('tr');
 			for (var r=0; r < rows.length; r++) {
-				ROW.rows.push(rows[r]);
+				if (rows[r].id) {
+					ROW.rows.push(rows[r]);
+				}
 			}
 		}
 	},
