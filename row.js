@@ -5,6 +5,7 @@ ROW = {
 	init: function() {
 		var tables, rows;
 
+		ROW.rows = [];
 		tables = ROW.root.getElementsByTagName('table');	
 		for (var t=0; t < tables.length; t++) {
 			rows = tables[t].getElementsByTagName('tr');
