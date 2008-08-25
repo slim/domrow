@@ -30,11 +30,19 @@ ROW = {
 			ROW.current_row++;
 		}
 
+		if (ROW.onNext) {
+			ROW.onNext();
+		}
+
 		return ROW.rows[ROW.current_row];
 	},
 	previous: function() {
 		if (ROW.current_row > 0 ) {
 			ROW.current_row--;
+		}
+
+		if (ROW.onPrevious) {
+			ROW.onPrevious();
 		}
 
 		return ROW.rows[ROW.current_row];

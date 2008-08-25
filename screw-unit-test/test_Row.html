@@ -24,17 +24,33 @@
 		  });
 		});
         describe("ROW.next()", function() {
+			var last_move = null;
           it("sets the current row to the next row and returns it", function() {
 			expect(ROW.next().id).to(equal, "L0002");
 			expect(ROW.current().id).to(equal, "L0002");
 			expect(ROW.next().id).to(equal, "L0003");
 			expect(ROW.next().id).to(equal, "L0004");
 		  });
+          it("executes onNext if it exists", function() {
+			ROW.onNext = function() {
+				last_move = "next";
+			}
+			ROW.next();
+			expect(last_move).to(equal, "next");
+		  });
 		});
         describe("ROW.previous()", function() {
+			var last_move = null;
           it("sets the current row to the previous row and returns it", function() {
-			expect(ROW.previous().id).to(equal, "L0003");
-			expect(ROW.current().id).to(equal, "L0003");
+			expect(ROW.previous().id).to(equal, "L0004");
+			expect(ROW.current().id).to(equal, "L0004");
+		  });
+          it("executes onPrevious() if it exists", function() {
+			ROW.onPrevious = function() {
+				last_move = "previous";
+			}
+			ROW.previous();
+			expect(last_move).to(equal, "previous");
 		  });
 		});
 	  });
