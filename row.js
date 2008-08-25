@@ -17,7 +17,9 @@ ROW = {
 		}
 	},
 	first: function() {
-		ROW.init();
+		if (ROW.rows.length < 1) {
+			ROW.init();
+		}
 		ROW.current_row = 0;
 
 		return ROW.rows[ROW.current_row];
