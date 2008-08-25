@@ -13,6 +13,19 @@
     <script src="../row.js"></script>
     <script type="text/javascript">
       Screw.Unit(function() {
+        describe("ROW.init()", function() {
+		  after(function() {
+			ROW.init();
+		  });
+          it("finds all the rows with an id in the document", function() {
+			ROW.init();
+			expect(ROW.rows.length).to(equal, 6);
+		  });
+          it("... or in the given table", function() {
+			ROW.init(document.getElementById('first_table'));
+			expect(ROW.rows.length).to(equal, 3);
+		  });
+		});
         describe("ROW.first()", function() {
           it("fires init() if (and only if) the document rows are not linked", function() {
 			ROW.first();
@@ -63,7 +76,7 @@
     </script>
 </head>
 <body>
-<table>
+<table id="first_table">
 <tr id="L0001"><td>a</td><td>b</td><td>c</td></tr>
 <tr id="L0002"><td>a</td><td>b</td><td>c</td></tr>
 <tr id="L0003"><td>a</td><td>b</td><td>c</td></tr>

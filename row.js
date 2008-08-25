@@ -2,11 +2,15 @@ ROW = {
 	root: document,
 	rows: [],
 	current_row: null,
-	init: function() {
+	init: function(table) {
 		var tables, rows;
 
 		ROW.rows = [];
-		tables = ROW.root.getElementsByTagName('table');	
+		if (table) {
+			tables = [table];
+		} else {
+			tables = ROW.root.getElementsByTagName('table');	
+		}
 		for (var t=0; t < tables.length; t++) {
 			rows = tables[t].getElementsByTagName('tr');
 			for (var r=0; r < rows.length; r++) {
