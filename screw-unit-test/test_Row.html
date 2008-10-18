@@ -72,6 +72,12 @@
 			expect(last_move).to(equal, "previous");
 		  });
 		});
+        describe("<row>.setAsCurrent()", function() {
+          it("sets the row as the current row", function() {
+			document.getElementById('L0005').setAsCurrent();
+			expect(ROW.current().id).to(equal, "L0005");
+		  });
+		});
 	  });
     </script>
 </head>

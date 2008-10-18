@@ -15,7 +15,11 @@ ROW = {
 			rows = tables[t].getElementsByTagName('tr');
 			for (var r=0; r < rows.length; r++) {
 				if (rows[r].id) {
-					ROW.rows.push(rows[r]);
+					rows[r].ROW_index = ROW.rows.length;
+					rows[r].setAsCurrent = function() {
+						ROW.current_row = this.ROW_index;
+					}
+					ROW.rows[rows[r].ROW_index] = rows[r];
 				}
 			}
 		}
